@@ -9,6 +9,14 @@ export const counterReducer=(state=0,action)=> {
     default:
       return state;
   }
-}
+};
+
+export const addCounter=(list)=>{
+  return list.push(["Hello"]);
+};
+
+export const removeCounter=(list,index)=>{
+  return list.delete(index);
+};
 
 
