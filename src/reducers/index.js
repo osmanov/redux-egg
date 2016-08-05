@@ -20,7 +20,7 @@ export const removeCounter=(list,index)=>{
 };
 
 export const incrementCounter=(list,index)=>{
-  return list.update(index,item=>item+1);
+  return list.update(index,item=>++item);
 };
 
 
