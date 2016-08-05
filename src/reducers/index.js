@@ -1,5 +1,3 @@
-import {Map,List} from 'immutable';
-
 export const counterReducer=(state=0,action)=> {
   switch (action.type) {
     case 'INCREMENT':
@@ -23,4 +21,7 @@ export const incrementCounter=(list,index)=>{
   return list.update(index,item=>++item);
 };
 
+export const toggleTodo=(todo)=>{
+  return todo.update('completed',(item)=>!item);
+};
 

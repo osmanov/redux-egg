@@ -1,5 +1,5 @@
 import test from 'ava';
-import {counterReducer,addCounter,incrementCounter} from './index.js';
+import {counterReducer,addCounter,incrementCounter,toggleTodo} from './index.js';
 import {createStore} from 'redux';
 import sinon from 'sinon';
 import {Map,List,is} from 'immutable';
@@ -18,7 +18,7 @@ test('counterReducer works',t => {
 
 test('addCounter is immutable',t=>{
   const listBefore=List(['before']);
-  t.is(is(listBefore,listBefore.push(['add'])),false);
+  t.is(is(listBefore,addCounter(listBefore)),false);
   t.is(listBefore.last(),'before');
 });
 
@@ -30,6 +30,23 @@ test('removeCounter is immutable',t=>{
 });
 
 test('increment counter',t=> {
-  let listBefore = List([1, 3, 5]);
+  const listBefore = List([1, 3, 5]);
   t.is(incrementCounter(listBefore,1).get(1),4);
+});
+
+test('toggleTodo',t=> {
+   const todoBefore={
+    id:0,
+    text:'Learn Redux',
+    completed:false
+  };
+  const todoAfter={
+    id:0,
+    text:'Learn Redux',
+    completed:true
+  };
+
+  const mapBefore= Map(todoBefore);
+  const mapAfter= Map(todoAfter);
+  t.is(is(toggleTodo(mapBefore),mapAfter),true);
 });
