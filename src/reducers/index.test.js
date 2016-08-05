@@ -1,5 +1,5 @@
 import test from 'ava';
-import {counterReducer,addCounter} from './index.js';
+import {counterReducer,addCounter,incrementCounter} from './index.js';
 import {createStore} from 'redux';
 import sinon from 'sinon';
 import {Map,List,is} from 'immutable';
@@ -29,3 +29,7 @@ test('removeCounter is immutable',t=>{
   t.is(listBefore.last(),'before');
 });
 
+test('increment counter',t=> {
+  let listBefore = List([1, 3, 5]);
+  t.is(incrementCounter(listBefore,1).get(1),4);
+});

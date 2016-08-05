@@ -19,4 +19,8 @@ export const removeCounter=(list,index)=>{
   return list.delete(index);
 };
 
+export const incrementCounter=(list,index)=>{
+  return list.update(index,item=>item+1);
+};
+
 
